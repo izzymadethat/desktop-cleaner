@@ -9,7 +9,8 @@ def check_if_file():
     for file in os.listdir(directory):
         file_path = os.path.join(directory, file)
         if os.path.isfile(file_path):
-            files.append(file)
+            if not file_path.endswith('.lnk'):
+                files.append(file)
     return files
 
 def get_file_extension(files_list):
