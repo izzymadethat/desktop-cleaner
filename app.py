@@ -29,6 +29,8 @@ def count_files_organized(files):
     message = f"You have moved {counted_files} files."
     print(message)
 
+
+def show_files_organized(files):
     # Get exact files moved.
     extension_counts = {}
     for extension in files:
@@ -51,5 +53,6 @@ def count_files_organized(files):
 test = check_if_file()
 ext_test = get_file_extension(test)
 count_files_organized(test)
+show_files_organized(test)
 
 # print(count_test)
