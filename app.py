@@ -1,5 +1,6 @@
 """ Clean The Desktop And Organize Files."""
 import os
+import datetime
 
 def check_if_file():
     """Check through the directory to make sure I am returning files."""
@@ -26,12 +27,12 @@ def count_files_organized(files):
     """Returns the number of files moved."""
 
     counted_files = len(files)
-    message = f"You have moved {counted_files} files."
-    print(message)
+    message = f"You have moved {counted_files} files from your Desktop."
+    return message
 
 
 def show_files_organized(files):
-    # Get exact files moved.
+    """ Return exact files moved."""
     extension_counts = {}
     for extension in files:
         _, file_extension = os.path.splitext(extension)
@@ -42,17 +43,34 @@ def show_files_organized(files):
         else:
             extension_counts[ext_name] = 1
 
-    # Print the count of each extension
-    for extension, count in extension_counts.items():
-        if count == 1:
-            print(f"{count} {extension[1:]} file moved.")
-        else:
-            print(f"{count} {extension[1:]} files moved.")
+    return extension_counts
 
 
 test = check_if_file()
 ext_test = get_file_extension(test)
-count_files_organized(test)
-show_files_organized(test)
 
-# print(count_test)
+
+files_organized = count_files_organized(test)
+files_moved = show_files_organized(test)
+
+
+# Save file to .txt log
+with open('log_file.txt', 'w', encoding='utf-8') as file:
+    # Write Headline
+    file.write("\t\t=== Desktop Clean ===\n")
+    file.write("\t\t\t Entry Log\n\n")
+    today = datetime.datetime.now()
+
+    # Write Cleanup information
+    file.write(f"{files_organized}\n\n")
+    file.write("Count\t\t\tFile\n")
+    for extension, count in files_moved.items():
+        file.write(f"{count} ........... \t{extension[1:]}\n")
+
+    # Display file names just in case.
+    file.write("\n\nFiles that were moved...\n")
+    for file_name in test:
+        file.write(f"{file_name}\n")
+
+    file.write("\n\n\t\t Log Details:\n")
+    file.write(f"Log saved {today}")
