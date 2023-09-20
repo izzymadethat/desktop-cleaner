@@ -10,6 +10,18 @@ def check_if_file():
             files.append(file)
     return files
 
-test = check_if_file()
+def get_file_extension(files_list):
+    """Return a list of extensions for later use.
+    This code splits each file found in check_if_file then add the ext
+    to a list set so that I can make sure each file ext is stored properly."""
 
-print(test)
+    extensions = set()
+    for file in files_list:
+        file_extension = os.path.splitext(file)[1]
+        extensions.add(file_extension)
+    return list(extensions)
+
+test = check_if_file()
+ext_test = get_file_extension(test)
+
+print(ext_test)
