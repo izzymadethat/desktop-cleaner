@@ -31,7 +31,6 @@ def count_files_organized(files):
     message = f"You have moved {counted_files} files from your Desktop."
     return message
 
-
 def show_files_organized(files):
     """ Return exact files moved."""
     extension_counts = {}
@@ -46,14 +45,11 @@ def show_files_organized(files):
 
     return extension_counts
 
-
 test = check_if_file()
 ext_test = get_file_extension(test)
 
-
 files_organized = count_files_organized(test)
 files_moved = show_files_organized(test)
-
 
 # Save file to .txt log
 with open('log_file.txt', 'w', encoding='utf-8') as file:

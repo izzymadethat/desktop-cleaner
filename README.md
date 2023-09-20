@@ -10,7 +10,7 @@ it will print a confirmation log to display the details of each transfer.
 
 Runs through entire desktop directory and ONLY finds actual files with extensions.
 
-Directories and File Folders excluded.
+File Directories and Shortcut Files excluded.
 
 ### get_file_extension()
 
