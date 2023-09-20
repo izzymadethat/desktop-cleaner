@@ -1,7 +1,8 @@
 # desktop-cleaner
 
 This app is designed simply to clean a cluttered desktop. It does so by moving
-files into folders based on their extensions.
+files into folders based on their extensions. When it is done (within seconds),
+it will print a confirmation log to display the details of each transfer.
 
 ## features:
 
@@ -19,3 +20,7 @@ log can be provided and future folders created for extensions not in list.
 ### count_files_organized()
 
 Returns exact number of files moved.
+
+### show_files_organized()
+
+Returns dictionary of file extensions moved.
