@@ -1,10 +1,11 @@
 """This function will create folders if they are not created"""
 
 import os
+from pathlib import Path
 import datetime
 
 def create_folder(path, folders, date):
-    """Create all folders and\or add a date folder."""
+    """Create all folders and/or add a date folder."""
 
     for folder in folders:
         new_directory = os.path.join(path, folder, date)
@@ -14,7 +15,7 @@ def create_folder(path, folders, date):
 
 
 def create_document_directory():
-    document_folder = r"C:\Users\Isaiah Vickers\Documents"
+    document_folder = str(Path.home() / 'Documents')
     new_destination = os.path.join(document_folder, 'Desktop Cleaner')
     os.makedirs(new_destination, exist_ok=True)
     return new_destination

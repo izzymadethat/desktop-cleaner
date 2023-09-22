@@ -5,15 +5,20 @@ import os
 import datetime
 
 # My imports
+from modules.user_info import *
 from modules.file_handle import File
 from modules.log_entry import *
 from modules.folder_manager import create_document_directory
 
+
 def DesktopCleaner():   
     document_folder = create_document_directory()
+    directory = get_desktop_name()
+    
+    go_to_desktop(directory)
+    
     app = File()
 
-    directory = r"C:\Users\Isaiah Vickers\Desktop"
     folders = [
         'Document Files',
         'Media Files',
@@ -33,7 +38,9 @@ def DesktopCleaner():
     file_extensions = app.extensions
     
     log_folder = create_log_folder(document_folder, app.get_current_day())
+    
     os.chdir(log_folder)
+    
     create_log(file_count, file_extensions, file_list)
 
 if __name__ == '__main__':

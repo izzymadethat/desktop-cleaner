@@ -17,7 +17,7 @@ import datetime
 from modules.folder_manager import *
 
 def create_log(file_count, file_extensions, file_names):
-    with open('log_file.txt', 'w', encoding='utf-8') as file:
+    with open("log_file.txt", 'w', encoding='utf-8') as file:
         # Get current date
         today = get_log_date()
 
