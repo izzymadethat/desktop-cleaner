@@ -1,7 +1,7 @@
 import os
 import shutil
 import datetime
-from os_functions.folder_manager import create_folder
+from modules.folder_manager import create_folder
 
 
 class File():
