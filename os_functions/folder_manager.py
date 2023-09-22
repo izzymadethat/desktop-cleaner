@@ -3,8 +3,6 @@
 import os
 import datetime
 
-
-
 def create_folders(folder_path, folders):
     """Create all folders and\or add a date folder."""
     today = datetime.datetime.now()

@@ -19,6 +19,7 @@ def create_log(file_count, file_extensions, file_names):
         file.write("\t\t=== Desktop Clean ===\n")
         file.write("\t\t\t Entry Log\n\n")
         today = datetime.datetime.now()
+        current_day = today.strftime('%m/%d/%Y %H:%M:%S')
 
         # Write Cleanup information
         file.write(f"{file_count}\n\n")
@@ -32,4 +33,4 @@ def create_log(file_count, file_extensions, file_names):
             file.write(f"{name}\n")
 
         file.write("\n\n\t\t Log Details:\n")
-        file.write(f"Log saved {today}")
+        file.write(f"Log saved {current_day}")
