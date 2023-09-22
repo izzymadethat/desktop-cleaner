@@ -3,8 +3,6 @@ import os
 import datetime
 
 # My imports
-from modules.tests.file_check import check_if_file
-from modules.tests.file_extension import get_file_extension
 from modules.file_handle import File
 from modules.log_entry import create_log
 
