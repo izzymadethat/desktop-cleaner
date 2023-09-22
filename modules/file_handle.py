@@ -57,6 +57,17 @@ class File():
         for file in self.files:
             if self.is_audio(file):
                 self.move_to_folder(path, file, 'Audio Files', today)
+            elif self.is_video(file) or self.is_image(file):
+                self.move_to_folder(path, file, 'Media Files', today)
+            elif self.is_document(file):
+                self.move_to_folder(path, file, 'Document Files', today)
+            elif self.is_compressed(file):
+                self.move_to_folder(path, file, 'Zip Files', today)
+            elif self.is_setup(file):
+                self.move_to_folder(path, file, 'Setup Files', today)
+            else:
+                self.move_to_folder(path, file, 'Files To Be Reviewed', today)
+
 
     # Extension Checks
     def is_audio(self, file):

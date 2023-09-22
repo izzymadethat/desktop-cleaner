@@ -3,8 +3,8 @@ import os
 import datetime
 
 # My imports
-from modules.file_check import check_if_file
-from modules.file_extension import get_file_extension
+from modules.tests.file_check import check_if_file
+from modules.tests.file_extension import get_file_extension
 from modules.file_handle import File
 from modules.log_entry import create_log
 
@@ -14,7 +14,7 @@ def DesktopCleaner():
 
     directory = r"C:\Users\Isaiah Vickers\Desktop"
     folders = [
-        'Documents',
+        'Document Files',
         'Media Files',
         'Audio Files',
         'Zip Files',
@@ -23,7 +23,7 @@ def DesktopCleaner():
     ]
 
     app.check_if_files(directory)
-    app.move(directory, folders)
+    # app.move(directory, folders)
     # app.get_extensions()
     # print(app.extensions)
     
