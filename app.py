@@ -11,12 +11,12 @@ from modules.log_entry import *
 from modules.folder_manager import create_document_directory
 
 
-def DesktopCleaner():   
+def DesktopCleaner():
     document_folder = create_document_directory()
     directory = get_desktop_name()
-    
+
     go_to_desktop(directory)
-    
+
     app = File()
 
     folders = [
@@ -36,11 +36,11 @@ def DesktopCleaner():
     file_count = app.count(file_list)
     app.get_extensions()
     file_extensions = app.extensions
-    
+
     log_folder = create_log_folder(document_folder, app.get_current_day())
-    
+
     os.chdir(log_folder)
-    
+
     create_log(file_count, file_extensions, file_list)
 
 if __name__ == '__main__':

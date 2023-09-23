@@ -2,6 +2,7 @@ import os
 import shutil
 import datetime
 from modules.folder_manager import create_folder
+import traceback
 
 
 class File():
@@ -22,7 +23,7 @@ class File():
         self.document = (".txt", ".pdf", ".csv", ".doc", ".xls")
         self.zip = (".zip", ".b1", ".rar")
         self.setup = (".exe",".iso")
-    
+
     def check_if_files(self, directory):
         for file in os.listdir(directory):
             file_path = os.path.join(directory, file)
@@ -48,26 +49,28 @@ class File():
                 self.extensions[ext_name] += 1
             else:
                 self.extensions[ext_name] = 1
-    
+
     def move(self, path, folders):
         today = self.get_current_day()
 
         create_folder(path, folders, today)
-               
-        for file in self.files:
-            if self.is_audio(file):
-                self.move_to_folder(path, file, 'Audio Files', today)
-            elif self.is_video(file) or self.is_image(file):
-                self.move_to_folder(path, file, 'Media Files', today)
-            elif self.is_document(file):
-                self.move_to_folder(path, file, 'Document Files', today)
-            elif self.is_compressed(file):
-                self.move_to_folder(path, file, 'Zip Files', today)
-            elif self.is_setup(file):
-                self.move_to_folder(path, file, 'Setup Files', today)
-            else:
-                self.move_to_folder(path, file, 'Files To Be Reviewed', today)
 
+        for file in self.files:
+            try:
+                if self.is_audio(file):
+                    self.move_to_folder(path, file, 'Audio Files', today)
+                elif self.is_video(file) or self.is_image(file):
+                    self.move_to_folder(path, file, 'Media Files', today)
+                elif self.is_document(file):
+                    self.move_to_folder(path, file, 'Document Files', today)
+                elif self.is_compressed(file):
+                    self.move_to_folder(path, file, 'Zip Files', today)
+                elif self.is_setup(file):
+                    self.move_to_folder(path, file, 'Setup Files', today)
+                else:
+                    self.move_to_folder(path, file, 'Files To Be Reviewed', today)
+            except Exception as e:
+                print(f"Error moving {file}: {e}")
 
     # Extension Checks
     def is_audio(self, file):
@@ -90,5 +93,5 @@ class File():
     def get_current_day(self):
         now = datetime.datetime.now()
         date = now.strftime("%m_%d")
-        
+
         return date
